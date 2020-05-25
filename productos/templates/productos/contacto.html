@@ -1,0 +1,102 @@
+{% extends 'header.html' %}
+{% load static %}
+
+
+{% block body_block%}
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'productos:index'%}" style="color: black;"><span>Inicio</span></a>
+        </li>
+        <li class="breadcrumb-item"><strong><span>Contacto</span></strong></li>
+    </ol>
+    <div class="container-fluid">
+        <hr>
+        <form action="" method="POST" id="contactForm" style="padding-bottom: 50px;">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div id="successfail"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 col-md-6" id="message" style="padding-right: 30px;">
+                    <h2 class="h4"><i class="fa fa-envelope"></i>&nbsp;Contactanos<small><small
+                                class="required-input">&nbsp;(*requerido)</small></small>
+                    </h2>
+                    <h4 style="color: green;">{{ mensaje }}</h4>
+                    <div class="form-group"><label for="from-name">Nombre</label><span class="required-input">*</span>
+                        <div class="input-group" style="width: 500px;">
+                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                        class="fa fa-user-o"></i></span></div>{{ form.nombre }}
+                        </div>
+                    </div>
+                    <div class="form-group"><label for="from-email">Email</label><span class="required-input">*</span>
+                        <div class="input-group" style="width: 500px;">
+                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                        class="fa fa-envelope-o"></i></span></div>{{ form.email }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="form-group"><label for="from-phone">Telefono</label><span
+                                class="required-input">*</span>
+                            <div class="input-group" style="width: 500px;">
+                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="fa fa-phone"></i></span></div>{{ form.telefono }}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group"><label for="from-calltime">Horario de Contacto</label>
+                            <div class="input-group" style="width: 500px;">
+                                <div class="input-group-prepend"><span class="input-group-text"><i
+                                            class="fa fa-clock-o"></i></span></div>{{ form.horario }}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 500px;"><label
+                            for="from-comments">Comentarios</label><small>&nbsp;(Opcional)</small>{{ form.comentarios }}
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row" style="width: 500px;">
+                            <div class="col"><button class="btn btn-primary btn-block" type="reset"><i
+                                        class="fa fa-undo"></i> Resetear</button></div>
+                            <div class="col"><button class="btn btn-primary btn-block" type="submit">Enviar&nbsp;<i
+                                        class="fa fa-chevron-circle-right"></i></button></div>
+                        </div>
+                    </div>
+        </form>
+        <hr class="d-flex d-md-none">
+    </div>
+    <div class="col-12 col-md-6">
+        <h2 class="h4"><i class="fa fa-location-arrow"></i> Encontranos</h2>
+        <div class="form-row">
+            <div class="col-12">
+                <div class="static-map"><img class="img-fluid" src="{% static 'productos/images/mapa.png' %}"
+                        alt="Ubicacion" width="317px" style="padding: 30px 0px 30px 0px; width: 500px;"></div>
+            </div>
+            <div class="col-sm-6 col-md-12 col-lg-6">
+                <h2 class="h4"><i class="fa fa-user"></i> Nuestra Info</h2>
+                <div><span><strong>Dakota Store</strong><br></span></div>
+                <div><span>unemail@gmail.com</span></div>
+                <div><span>www.unwebsite.com</span></div>
+                <hr class="d-sm-none d-md-block d-lg-none">
+            </div>
+            <div class="col-sm-6 col-md-12 col-lg-6">
+                <h2 class="h4"><i class="fa fa-location-arrow"></i> Nuestra Direccion</h2>
+                <div></div>
+                <div><span>Calle 123 entre calle y calle</span></div>
+                <div><span>Palermo, CABA, 1426</span></div>
+                <div><abbr data-toggle="tooltip" data-placement="top" title="Office Phone: 555-867-5309">Tel:</abbr>
+                    +5491100000000</div>
+                <hr class="d-sm-none">
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+{% include 'footer.html' %}
+{% endblock body_block %}

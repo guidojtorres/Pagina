@@ -1,0 +1,17 @@
+{% extends 'header.html' %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+<div class="container">
+    <h1 class="bettertext">Agregar producto</h1>
+    <form method="post">
+        <div class="bettertext">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary" value="save">Guardar</button>
+        </div>
+    </form>
+</div>
+<hr>
+{% include 'footer.html' %}
+{% endblock %}

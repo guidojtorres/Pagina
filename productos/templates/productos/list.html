@@ -1,0 +1,26 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'productos:index'%}" style="color: black;"><span>Inicio</span></a>
+        </li>
+        <li class="breadcrumb-item"><a href="#" style="color: black;"><strong><span>Productos</span></strong></a></li>
+    </ol>
+    <div class="row">
+        {% for p in object_list reversed %}
+        <div class="col-md-3" style="padding-bottom: 20px;">
+            <div class="card"><a href="{% url 'productos:producto_detail' slug=p.slug %}"><img
+                        class="card-img-top w-100 d-block" src="{{ p.imagen.url }}"
+                        style="width: auto; height: 150px;" /></a>
+                <div class="card-body"><a href="{% url 'productos:producto_detail' slug=p.slug %}"
+                        style="color: #465765; font-weight: 500; font-size: 0.90rem;"><span>{{p.nombre}}</span></a>
+                    <h5>{{p.precio}}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}
